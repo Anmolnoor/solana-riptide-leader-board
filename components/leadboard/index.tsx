@@ -48,8 +48,11 @@ const LeaderBoard = (props: any) => {
 
   return (
     <div>
-      <div className="m-20 text-center text-5xl font-bold text-cyan-500">
-        Solana Riptide Hackathon LeaderBoard
+      <div className="mt-20 mb-10 text-center text-5xl font-bold text-cyan-500">
+        Solana Riptide Hackathon LeaderBoard 2.0
+      </div>
+      <div className="text-1xl m-10 text-center font-bold text-blue-500">
+        Auto reload after 10 seconds
       </div>
 
       <div className="flex flex-row items-center justify-center">
