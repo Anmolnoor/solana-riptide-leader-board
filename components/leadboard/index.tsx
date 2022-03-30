@@ -6,20 +6,20 @@ import useSWR from 'swr'
 const LeaderBoard = (props: any) => {
   const fetcher = () => fetch('/api/fetchData').then((res) => res.json())
 
-  const { data, error } = useSWR('/api/hello', fetcher, {
+  const { data, error } = useSWR('/api/', fetcher, {
     refreshInterval: 10000,
   })
 
-  const reqData = data?.resp?.pageProps?.hackathonProjects
+  const reqData = data?.data
   reqData?.sort((a: any, b: any) => {
-    return b.voteCount - a.voteCount
+    return b.votes - a.votes
   })
 
   const columns = [
     {
       title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
+      dataIndex: 'title',
+      key: 'title',
       width: 400,
     },
     {
@@ -27,14 +27,14 @@ const LeaderBoard = (props: any) => {
     },
     {
       title: 'Votes',
-      dataIndex: 'voteCount',
-      key: 'voteCount',
+      dataIndex: 'votes',
+      key: 'votes',
       width: 70,
     },
     {
-      title: 'slug',
-      dataIndex: 'slug',
-      key: 'slug',
+      title: 'Links',
+      dataIndex: 'title',
+      key: 'title',
       render: (value: any) => (
         <a
           target={'_blank'}
