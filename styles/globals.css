@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  'tr.drop-over-downward',
+  'td' {
+    @apply border-b-2 border-dashed border-red-600;
+  }
+  'tr.drop-over-upward',
+  'td' {
+    @apply border-t-2 border-dashed bg-red-600;
+  }
+}
