@@ -10,8 +10,6 @@ const LeaderBoard = (props: any) => {
     refreshInterval: 10000,
   })
 
-  console.log({ data })
-
   const reqData = data?.resp?.pageProps?.hackathonProjects
   reqData?.sort((a: any, b: any) => {
     return b.voteCount - a.voteCount
