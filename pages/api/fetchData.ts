@@ -20,19 +20,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       return el.split(`"`)[0]
     })
   projectlistary.shift()
-
+  // https://solana.com/api/hackathon/so-move
   try {
     projectlistary.map(async (el) => {
-      const data = await axios.get(`https://solana.com/riptide/voting/${el}`)
-
-      let count = data.data.split(
-        `fill="currentColor"></path></svg><span class="mx-2">Upvote</span><span>`
-      )[1]
-      count = count.split(`<`)[0]
-      resp.push({
-        title: el,
-        votes: count,
-      })
+      const data = await axios.get(`https://solana.com/api/hackathon/${el}`)
+      resp.push(data.data.hackathonProject)
     })
   } catch (error) {
     console.log(error)
