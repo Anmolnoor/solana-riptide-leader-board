@@ -31,7 +31,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const data = resp
-  console.log({ resp })
   resp = []
   res.status(200).json({ data })
   // const resp = await data.data      fill="currentColor"></path></svg><span class="mx-2">Upvote</span><span>
