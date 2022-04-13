@@ -10,6 +10,7 @@ const LeaderBoard = (props: any) => {
     refreshInterval: 10000,
   })
 
+  const reqSes = data?.session
   const reqData = data?.data
   reqData?.sort((a: any, b: any) => {
     return b.votes.count - a.votes.count
@@ -23,12 +24,9 @@ const LeaderBoard = (props: any) => {
       width: 400,
     },
     {
-      width: 100,
-    },
-    {
       title: 'Votes',
       dataIndex: 'votes',
-      key: 'votes',
+      key: 'projectImageId',
       render: (value: any) => value.count,
       width: 70,
     },
@@ -50,19 +48,26 @@ const LeaderBoard = (props: any) => {
   return (
     <div>
       <div className="mt-20 mb-10 text-center text-5xl font-bold text-cyan-500">
-        Solana Riptide Hackathon LeaderBoard 3.0
+        Solana Riptide Hackathon LeaderBoard 4.0
       </div>
       <div className="flax text-1xl m-10 flex-col items-center justify-center text-center font-bold text-blue-500">
-        <span className="block">
+        <span className="mb-4 flex items-center justify-center ">
           Vote for my project :::{' '}
           <a
-            className="text-red-500"
+            className="ml-10 text-2xl text-red-500"
             href="https://solana.com/riptide/voting/e-commerce-chain"
           >
             E-Commerce-chain
           </a>
         </span>
-        <span className="block">Auto reload after 10 seconds</span>
+        <span className="mr-10">Auto reload after 10 seconds.</span>
+
+        <span className="">
+          This is working on{' '}
+          <span className="text-red-500">
+            {reqSes ? reqSes : 'Rending Votes from Server'}
+          </span>
+        </span>
       </div>
 
       <div className="text-1xl m-10 text-center font-bold text-blue-500"></div>
