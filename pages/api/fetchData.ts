@@ -2,7 +2,8 @@
 import axios from 'axios'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import fs from 'fs'
-import { error } from 'console'
+import path from 'path'
+
 interface data {
   title: string
   votes: string
@@ -10,6 +11,8 @@ interface data {
 type Resp = data[]
 
 let resp: Resp = []
+
+const filepath = path.join(__dirname, '../../backupData.json')
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -32,7 +35,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       }
     })
     if (resp.length !== 0 && resp.length === 410) {
-      fs.writeFileSync('backupData.json', JSON.stringify(resp))
+      fs.writeFileSync(filepath, JSON.stringify(resp))
       // console.log(`File is written successfully!`)
     }
 
@@ -47,7 +50,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     resp = []
     res.status(200).json({ data, session: 'live Updates' })
   } catch (error) {
-    const data = JSON.parse(fs.readFileSync('backupData.json', 'utf-8'))
+    const data = JSON.parse(fs.readFileSync(filepath, 'utf-8'))
     res.status(200).json({ data, session: 'offline backup' })
   }
 }
